@@ -1,0 +1,10 @@
+h1,
+p {
+  font-family: Lato;
+}
+.done {
+  background-color: red;
+}
+.notDone {
+  background-color: green;
+}
