@@ -1,10 +1,30 @@
-h1,
+* {
+  padding: 0;
+  margin: 0;
+}
+:root {
+  --green: rgba(0, 177, 0, 0.651);
+  --red: rgba(184, 0, 0, 0.63);
+}
 p {
   font-family: Lato;
 }
 .done {
-  background-color: red;
+  background-color: var(--green);
 }
 .notDone {
-  background-color: green;
+  background-color: var(--red);
+}
+.base {
+  margin-left: 10px;
+  margin-right: 10px;
+  border-radius: 5px;
+  box-shadow: -3px 3px 2px black;
+  transition: all 0.3s;
+  padding: 7px;
+  max-width: 500px;
+}
+.base:hover {
+  transform: scale(1.04);
+  box-shadow: -1.5pxx 1.5px 2px black;
 }
