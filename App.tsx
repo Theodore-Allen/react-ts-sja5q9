@@ -4,6 +4,7 @@ import { v4 as uuidv4 } from 'uuid';
 import TodoList from './TodoList';
 export default function App() {
   const [todos, setTodos] = React.useState([]);
+  const [doneTodos, setDoneTodos] = React.useState([]);
   const input = React.useRef();
 
   function handleSetTodo() {
@@ -19,10 +20,13 @@ export default function App() {
   }
 
   function StateChange(id) {
-    const newTodos = [...todos];
+    const newTodos = [...todos, ...doneTodos];
     const todo = newTodos.find((todo) => todo.id === id);
     todo.completed = !todo.completed;
-    setTodos(newTodos);
+    const DoneTodos = newTodos.filter((todo) => todo.completed === true);
+    const NotDoneTodos = newTodos.filter((todo) => todo.completed === false);
+    setTodos(NotDoneTodos);
+    setDoneTodos(DoneTodos);
   }
 
   return (
@@ -30,11 +34,17 @@ export default function App() {
       <div className="input">
         <input ref={input} type="text" />
         <button onClick={handleSetTodo}>add Task</button>
-        <span>
-          {todos.filter((todo) => todo.completed === true).length} Done
-        </span>
+        <span>{doneTodos.length} Done</span>
       </div>
-      <TodoList StateChange={StateChange} todos={todos} />
+      <div className="todos">
+      <h2>Not Done</h2>
+        <TodoList StateChange={StateChange} todos={todos} />
+      </div>
+
+      <div className="doneTodos">
+        <h2>Done</h2>
+        <TodoList StateChange={StateChange} todos={doneTodos} />
+      </div>
     </div>
   );
 }

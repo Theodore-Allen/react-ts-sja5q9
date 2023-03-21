@@ -1,7 +1,10 @@
 * {
   padding: 0;
   margin: 0;
-  background-color: rgba(102, 51, 153, 0.048);
+ 
+}
+body{
+  background-color: rgb(0, 0, 46);
 }
 :root {
   --green: rgba(0, 177, 0, 0.651);
@@ -23,12 +26,12 @@ p {
   border-radius: 2px;
   transition: all 0.3s;
   padding: 7px;
-  max-width: 500px;
+   min-width: 500px;
   margin-bottom: 10px;
 }
 .base:hover {
   transform: scale(1.02);
-  box-shadow: -1.5pxx 1.5px 2px black;
+  
 }
 .input
 {
@@ -38,11 +41,16 @@ p {
 }
 .input input
 {
+  margin-left: 18px;
+  background-color: transparent;
+  outline: 0;
+  border: 0;
+  border-bottom: 2px solid aliceblue;
   padding: 0;
   height: 35px;
   width: 275px;
-  border-radius: 3px;
   font-size: larger;
+  color: aliceblue;
 }
 .input button
 {
@@ -52,11 +60,33 @@ top:-2px;
   margin-right: 10px;
   padding: 0 5px;
   height: 35px;
-  border: 2.7px solid black;
+  border: 2.7px solid aliceblue;
   border-radius: 3px;
   background-color: transparent;
-  
+  color: aliceblue;
 }
 .input span{
  font-size: 20px;
+ color: aliceblue;
+}
+.doneTodos
+{
+  margin: 30px;
+ border-radius: 4px;
+ background-color: aliceblue;
+  min-height: 400px;
+  padding: 10px;
+  width: 600px;
+}
+.todos{
+  margin: 30px;
+ border-radius: 4px;
+ background-color: aliceblue;
+  min-height: 400px;
+  padding: 10px;
+  width: 600px;
+}
+.todos h2, .doneTodos h2
+{
+  margin-bottom: 20px;
 }
