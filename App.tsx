@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { v4 as uuidv4 } from 'uuid';
-import './style.css';
+
 import TodoList from './TodoList';
 export default function App() {
   const [todos, setTodos] = React.useState([]);
@@ -27,9 +27,13 @@ export default function App() {
 
   return (
     <div>
-      <input ref={input} type="text" />
-      <button onClick={handleSetTodo}>add Task</button>
-      <span>{todos.filter((todo) => todo.completed === true).length} Done</span>
+      <div className="input">
+        <input ref={input} type="text" />
+        <button onClick={handleSetTodo}>add Task</button>
+        <span>
+          {todos.filter((todo) => todo.completed === true).length} Done
+        </span>
+      </div>
       <TodoList StateChange={StateChange} todos={todos} />
     </div>
   );
