@@ -20,8 +20,10 @@ export default function App() {
   }
 
   function StateChange(id) {
+      
     const newTodos = [...todos, ...doneTodos];
     const todo = newTodos.find((todo) => todo.id === id);
+    
     todo.completed = !todo.completed;
     const DoneTodos = newTodos.filter((todo) => todo.completed === true);
     const NotDoneTodos = newTodos.filter((todo) => todo.completed === false);
@@ -32,12 +34,20 @@ export default function App() {
   return (
     <div>
       <div className="input">
-        <input ref={input} type="text" />
+        <input
+          onKeyUp={(e) => {
+            if (e.code === 'Enter') {
+              handleSetTodo();
+            }
+          }}
+          ref={input}
+          type="text"
+        />
         <button onClick={handleSetTodo}>add Task</button>
         <span>{doneTodos.length} Done</span>
       </div>
       <div className="todos">
-      <h2>Not Done</h2>
+        <h2>Not Done</h2>
         <TodoList StateChange={StateChange} todos={todos} />
       </div>
 
