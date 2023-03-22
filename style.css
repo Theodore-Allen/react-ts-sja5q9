@@ -26,7 +26,7 @@ p {
   border-radius: 2px;
   transition: all 0.3s;
   padding: 7px;
-   min-width: 500px;
+   min-width: 70.5%;
   margin-bottom: 10px;
 }
 .base:hover {
@@ -41,14 +41,16 @@ p {
 }
 .input input
 {
-  margin-left: 18px;
+  position: relative;
+  left: -30%;
+  margin-left: 50%;
   background-color: transparent;
   outline: 0;
   border: 0;
   border-bottom: 2px solid aliceblue;
   padding: 0;
   height: 35px;
-  width: 275px;
+  width: 60%;
   font-size: larger;
   color: aliceblue;
 }
@@ -71,20 +73,29 @@ top:-2px;
 }
 .doneTodos
 {
-  margin: 30px;
+  position: relative;
+  text-align: center;
  border-radius: 4px;
  background-color: aliceblue;
   min-height: 400px;
   padding: 10px;
-  width: 600px;
+  width: 85%;
+  left: -44.5%;
+  margin-bottom: 20px;
+  margin-left: 50%;
+    
 }
 .todos{
-  margin: 30px;
+  position: relative;
+  text-align: center;
  border-radius: 4px;
  background-color: aliceblue;
   min-height: 400px;
   padding: 10px;
-  width: 600px;
+  width: 85%;
+  left: -44.5%;
+  margin-bottom: 20px;
+  margin-left: 50%;
 }
 .todos h2, .doneTodos h2
 {
