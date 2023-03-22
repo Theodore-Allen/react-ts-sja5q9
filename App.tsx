@@ -6,7 +6,31 @@ export default function App() {
   const [todos, setTodos] = React.useState([]);
   const [doneTodos, setDoneTodos] = React.useState([]);
   const input = React.useRef();
+  window.addEventListener('keyDown', (e) => {console.log(e)})
 
+  function keyPressed(code: string) {
+    var temp: boolean = false;
+    window.addEventListener('keyDown', (e) => {
+      console.log(e);
+      if (e.code === code) {
+        temp = true;
+      }
+    });
+
+    console.log(temp);
+    return temp;
+  }
+  function handleDeleteTodo(id) {
+    const newTodos = [...todos, ...doneTodos];
+    const DoneTodos = newTodos.filter(
+      (todo) => todo.completed === true && todo.id != id
+    );
+    const NotDoneTodos = newTodos.filter(
+      (todo) => todo.completed === false && todo.id != id
+    );
+    setTodos(NotDoneTodos);
+    setDoneTodos(DoneTodos);
+  }
   function handleSetTodo() {
     // @ts-expect-error
     const name = input.current.value;
@@ -20,10 +44,12 @@ export default function App() {
   }
 
   function StateChange(id) {
-      
+    if (keyPressed('Enter')) {
+      console.log(' enter was clicked');
+    }
     const newTodos = [...todos, ...doneTodos];
     const todo = newTodos.find((todo) => todo.id === id);
-    
+
     todo.completed = !todo.completed;
     const DoneTodos = newTodos.filter((todo) => todo.completed === true);
     const NotDoneTodos = newTodos.filter((todo) => todo.completed === false);
@@ -33,7 +59,7 @@ export default function App() {
 
   return (
     <div>
-      <div className="input">
+      <div  className="input">
         <input
           onKeyUp={(e) => {
             if (e.code === 'Enter') {
