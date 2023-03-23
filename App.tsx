@@ -6,9 +6,6 @@ export default function App() {
   const [todos, setTodos] = React.useState([]);
   const [doneTodos, setDoneTodos] = React.useState([]);
   const input = React.useRef();
-  window.addEventListener('keyDown', (e) => {
-    console.log(e);
-  });
 
   function keyPressed(code: string) {
     var temp: boolean = false;
@@ -45,8 +42,9 @@ export default function App() {
     input.current.value = null;
   }
 
+  console.log(keyPressed('ShiftLeft'));
   function StateChange(id) {
-    if (keyPressed('Enter')) {
+    if (keyPressed('ShiftLeft')) {
       console.log(' enter was clicked');
     }
     const newTodos = [...todos, ...doneTodos];
