@@ -6,12 +6,13 @@ export default function App() {
   const [todos, setTodos] = React.useState([]);
   const [doneTodos, setDoneTodos] = React.useState([]);
   const input = React.useRef();
-  window.addEventListener('keyDown', (e) => {console.log(e)})
+  window.addEventListener('keyDown', (e) => {
+    console.log(e);
+  });
 
   function keyPressed(code: string) {
     var temp: boolean = false;
-    window.addEventListener('keyDown', (e) => {
-      console.log(e);
+    document.addEventListener('keydown', (e) => {
       if (e.code === code) {
         temp = true;
       }
@@ -31,6 +32,7 @@ export default function App() {
     setTodos(NotDoneTodos);
     setDoneTodos(DoneTodos);
   }
+
   function handleSetTodo() {
     // @ts-expect-error
     const name = input.current.value;
@@ -59,7 +61,7 @@ export default function App() {
 
   return (
     <div>
-      <div  className="input">
+      <div className="input">
         <input
           onKeyUp={(e) => {
             if (e.code === 'Enter') {
