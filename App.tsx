@@ -18,8 +18,13 @@ export default function App() {
     console.log(temp);
     return temp;
   }
+
+  var gettingDeleted: boolean = false;
   function handleDeleteTodo(id) {
+    gettingDeleted = true;
+ 
     const newTodos = [...todos, ...doneTodos];
+    const Todo = newTodos.find(todo => todo === id);
     const DoneTodos = newTodos.filter(
       (todo) => todo.completed === true && todo.id != id
     );
@@ -28,6 +33,7 @@ export default function App() {
     );
     setTodos(NotDoneTodos);
     setDoneTodos(DoneTodos);
+   
   }
 
   function handleSetTodo() {
@@ -42,11 +48,8 @@ export default function App() {
     input.current.value = null;
   }
 
-  console.log(keyPressed('ShiftLeft'));
   function StateChange(id) {
-    if (keyPressed('ShiftLeft')) {
-      console.log(' enter was clicked');
-    }
+    if (gettingDeleted === true) return;
     const newTodos = [...todos, ...doneTodos];
     const todo = newTodos.find((todo) => todo.id === id);
 
@@ -74,12 +77,20 @@ export default function App() {
       </div>
       <div className="todos">
         <h2>Not Done</h2>
-        <TodoList StateChange={StateChange} todos={todos} />
+        <TodoList
+          Delete={handleDeleteTodo}
+          StateChange={StateChange}
+          todos={todos}
+        />
       </div>
 
       <div className="doneTodos">
         <h2>Done</h2>
-        <TodoList StateChange={StateChange} todos={doneTodos} />
+        <TodoList
+          Delete={handleDeleteTodo}
+          StateChange={StateChange}
+          todos={doneTodos}
+        />
       </div>
     </div>
   );

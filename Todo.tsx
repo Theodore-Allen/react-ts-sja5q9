@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-export default function Todo({ todoObj, StateChange }) {
+export default function Todo({ todoObj, StateChange, Delete }) {
   var today = new Date();
 
   var time = today.getHours() + ':' + today.getMinutes();
@@ -16,13 +16,19 @@ export default function Todo({ todoObj, StateChange }) {
   function handleStateChange() {
     StateChange(todoObj.id);
   }
+  function handleDelete()
+  {
+    Delete(todoObj.id)
+  }
 
   return (
     // @ts-expect-error
     <>
-      <div onClick={handleStateChange} className={className}>
+      <div  onClick={handleStateChange} className={className}>
         <h1>{todoObj.name}</h1>
+        <button onClick={handleDelete}>Delete</button>
         <p className="date">{TimeLine}</p>
+
       </div>
     </>
   );
